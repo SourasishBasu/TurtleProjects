@@ -1,7 +1,8 @@
-from turtle import Turtle
-
+import turtle as t
+from turtle import Screen
+import random
 #### ---- Turtle Race ---- ####
-
+screen = Screen()
 screen.bgcolor("grey")
 screen.setup(width=500, height=400)
 

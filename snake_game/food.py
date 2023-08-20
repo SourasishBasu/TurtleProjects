@@ -1,6 +1,7 @@
 from turtle import Turtle
 import random
 
+
 # Inherit turtle class in Food class to create and place food object everytime it is called in main file
 class Food(Turtle):
 
