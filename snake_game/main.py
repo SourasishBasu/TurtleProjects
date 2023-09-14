@@ -19,10 +19,10 @@ score = Score()
 
 # Checking for keypress event
 screen.listen()
-screen.onkey(snake.move_left, "a")
-screen.onkey(snake.move_right, "d")
-screen.onkey(snake.move_down, "s")
-screen.onkey(snake.move_up, "w")
+screen.onkey(snake.left, "a")
+screen.onkey(snake.right, "d")
+screen.onkey(snake.down, "s")
+screen.onkey(snake.up, "w")
 
 # Running Game
 game_on = True
@@ -36,18 +36,18 @@ while game_on:
     # Updating score and snake size
     if snake.head.distance(food) < 15:
         food.refresh()
-        snake.grow()
+        snake.extend()
         score.score_increase()
 
     # Check for collision with wall
     if snake.head.xcor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() < -280 or snake.head.ycor() > 280:
-        game_on = False
-        score.endgame()
+        score.reset_game()
 
     # Check for collision with tail
     for seg in snake.segments[1:]:
-        if snake.head.distance(seg) < 10:
-            game_on = False
-            score.endgame()
+        if seg == snake.head:
+            pass
+        elif snake.head.distance(seg) < 10:
+            score.reset_game()
 
 screen.exitonclick()
